@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Легендарні літаки</title>
+</head>
+<body>
+
+  <header>
+    <h1>Легендарні літаки</h1>
+    <nav>
+      <ul class="menu">
+        <li><a href="edit.html">Головна</a></li>
+        <li class="dropdown">
+            <a href="">Розділи</a>
+            <ul class="dropdown-content">
+                <li><a href="historyAviation.html">Історія IT в авіації</a></li>
+                <li><a href="ai.html">Автоматизація та ШІ</a></li>
+                <li><a href="hist.html">Історія подій</a></li>
+                <li><a href="last.html">Легендарні літаки</a></li>
+                <li><a href="radar.html">Радар</a></li>
+            </ul>
+        </li>
+    </ul>
+      <ul>
+        <li><a href="#concorde">Concorde</a></li>
+        <li><a href="#spitfire">Spitfire</a></li>
+        <li><a href="#lancaster">Lancaster</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Concorde Section -->
+    <section id="concorde">
+      <h2>Concorde</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/British_Airways_Concorde_G-BOAC_03.jpg/640px-British_Airways_Concorde_G-BOAC_03.jpg" alt="Concorde"
+      height="460px" width="710px" class="aircraft-image">
+      <img src="https://media.npr.org/assets/img/2023/11/09/concorde-lead_custom-39e7cd136e8575056dc23bba7a44e89e3a1d3e62.jpg" alt="Concorde"
+      height="460px" width="710px" class="aircraft-image">
+      <p><strong>Історія:</strong>  Concorde був турбореактивним надзвуковим пасажирським літаком, що експлуатувався в 1976-2003 роках. Це був один з двох надзвукових пасажирських літаків, який виконував регулярні рейси на надзвичайно високих швидкостях</p>
+      <p><strong>Технічні характеристики:</strong>Довжина 61.66 м, розмах крил 25.6 м, максимальна швидкість 2180 км/год</p>
+        <iframe class="video1" src="https://www.youtube.com/embed/3x9hO7n5WiA?si=p89gvRmYaGj1E5Gc" 
+    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen width="800px" height="400px"></iframe>
+    </section>
+
+    <!-- Spitfire Section -->
+    <section id="spitfire">
+      <h2>Spitfire</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Ray_Flying_Legends_2005-1.jpg" alt="Spitfire"
+      height="150px" width="670px" class="aircraft-image">
+      <img src="https://www.classic-wings.co.uk/wp-content/uploads/Spitfire-E64C7279-18000x1200-1.jpg" alt="Spitfire"
+      height="240px" width="750px" class="aircraft-image">
+      <p><strong>Історія:</strong>Supermarine Spitfire — це британський одномісний винищувач, який став основною частиною британської винищувальної авіації під час Другої світової війни. Він отримав світову славу за свою участь в битві за Британію.</p>
+      <p><strong>Технічні характеристики:</strong> Довжина 9.12 м, розмах крил 11.23 м, максимальна швидкість 592 км/год</p>
+      <iframe class="video1" src="https://www.youtube.com/embed/Rf-SC-dfY0E?si=Af1xkk4JF2bMSAvv" 
+      frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen width="800px" height="400px"></iframe>
+    </section>
+
+    <!-- Lancaster Section -->
+    <section id="lancaster">
+      <h2>Lancaster</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Battle_of_Britain_Memorial_flight_Avro_Lancaster_%28cropped%29.jpg" alt="Lancaster" 
+       width="688px" class="aircraft-image">
+      <img src="https://www.warplane.com/images/Aircraft/Lancaster43.jpg" alt="Lancaster" 
+       width="710px" class="aircraft-image">
+      <p><strong>Історія:</strong>Avro Lancaster — британський важкий бомбардувальник часів Другої світової війни, який використовувався для стратегічних бомбардувань. Це був один з найвідоміших і ефективних бомбардувальників свого часу.</p>
+      <p><strong>Технічні характеристики:</strong>Довжина 21.34 м, розмах крил 31.09 м, максимальна швидкість 462 км/год</p>
+      <iframe class="video1" src="https://www.youtube.com/embed/wTGc9-2RaqE?si=dGnv0LRU27dRA48Q" 
+      frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen width="800px" height="400px"></iframe>
+    </section>
+  </main>
+<style>
+    /* Basic Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #87ceeb, #f4f4f9);
+  }
+  
+  header {
+    background: linear-gradient(to bottom, #87ceeb, #f4f4f9);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin: 0 10px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  section {
+    margin-bottom: 40px;
+  }
+  
+  .aircraft-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  video {
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  section {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  section.visible {
+    opacity: 1;
+  }
+  .menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.menu > li {
+    position: relative;
+}
+
+.menu > li > a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.menu > li > a:hover {
+    background-color: #111;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 14px 16px;
+}
+
+.bar {
+    height: 2px;
+    width: 25px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+/* Адаптивні стилі */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .dropdown-content {
+        position: static;
+    }
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.menu-toggle {
+  display: flex;
+  flex-direction: column; /* Вирівнює іконку гамбургера вертикально */
+  cursor: pointer;
+}
+
+.menu {
+  display: flex;
+  align-items: center; /* Вирівнює меню по вертикалі */
+}
+
+.menu > li {
+  margin: 0 10px; /* Відстань між пунктами меню */
+}
+
+.menu > li > a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px; /* Внутрішні відступи для кнопок */
+  transition: background-color 0.3s; /* Плавний перехід для кольору фону */
+}
+
+.menu > li > a:hover {
+  background-color: #111; /* Колір фону при наведенні */
+}
+.menu > li > a {
+  background: linear-gradient(135deg, #007BFF, #0056b3); /* Градієнт */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тінь */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.menu > li > a {
+  font-family: 'Arial', sans-serif; /* Змінюємо шрифт */
+  font-size: 16px; /* Розмір шрифту */
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.menu > li > a {
+  background-color: #007BFF; /* Основний колір кнопки */
+  color: white; /* Колір тексту */
+  padding: 10px 20px; /* Внутрішні відступи */
+  border-radius: 5px; /* Закруглені кути */
+  text-decoration: none; /* Без підкреслення */
+  transition: background-color 0.3s, transform 0.3s; /* Анімації при переході */
+}
+
+.menu > li > a:hover {
+  background-color: #0056b3; /* Колір при наведенні */
+  transform: scale(1.05); /* Збільшення при наведенні */
+}
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const aircraftSections = document.querySelectorAll("section");
+        
+        window.addEventListener("scroll", () => {
+          aircraftSections.forEach(section => {
+            const sectionPosition = section.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (sectionPosition < screenPosition) {
+              section.classList.add("visible");
+            } else {
+              section.classList.remove("visible");
+            }
+          });
+        });
+      });
+      
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Реальний час польотів</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script>
+    // Ініціалізація карти
+    const map = L.map('map').setView([48.3794, 31.1656], 5); // Центр України
+
+    // Додавання плиткового шару
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Функція для отримання даних про літаки
+    async function fetchAircraftData() {
+      try {
+        const response = await fetch('https://opensky-network.org/api/states/all');
+        const data = await response.json();
+
+        // Очищення карти перед додаванням нових маркерів
+        map.eachLayer(layer => {
+          if (layer instanceof L.Marker) {
+            map.removeLayer(layer);
+          }
+        });
+
+        // Додавання літаків на карту
+        data.states.forEach(state => {
+          const [icao24, callsign, originCountry, timePosition, lastContact, longitude, latitude, altitude] = state;
+
+          if (latitude && longitude) {
+            L.marker([latitude, longitude])
+              .addTo(map)
+              .bindPopup(`
+                <strong>Позивний:</strong> ${callsign || 'Невідомо'}<br>
+                <strong>Країна:</strong> ${originCountry}<br>
+                <strong>Висота:</strong> ${altitude ? altitude.toFixed(0) + ' м' : 'Невідомо'}
+              `);
+          }
+        });
+      } catch (error) {
+        console.error('Помилка при отриманні даних:', error);
+      }
+    }
+
+    // Оновлення даних кожні 10 секунд
+    setInterval(fetchAircraftData, 10000);
+    fetchAircraftData();
+  </script>
+</body>
+</html>

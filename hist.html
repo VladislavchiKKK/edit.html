@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Історія Авіації</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #87ceeb, #f4f4f9);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 40px auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background: #333;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .timeline-event {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+      margin: 20px 0;
+    }
+
+    .timeline-event.left {
+      flex-direction: row-reverse;
+    }
+
+    .timeline-event .content {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+      width: 40%;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.6s ease-in-out;
+    }
+
+    .timeline-event.left .content::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: -10px;
+      border: 10px solid transparent;
+      border-left: 10px solid white;
+    }
+
+    .timeline-event.right .content::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: -10px;
+      border: 10px solid transparent;
+      border-right: 10px solid white;
+    }
+
+    .timeline-event .content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-event span {
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 10px;
+      display: block;
+    }
+    nav {
+        background-color: #2bc317;
+        position: relative;
+        height: 50px;
+        
+    }
+    
+    .menu {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+    
+    .menu > li {
+        position: relative;
+    }
+    
+    .menu > li > a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+    
+    .menu > li > a:hover {
+        background-color: #111;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        z-index: 1;
+    }
+    
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+    
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 14px 16px;
+    }
+    
+    .bar {
+        height: 2px;
+        width: 25px;
+        background-color: white;
+        margin: 4px 0;
+    }
+    
+    /* Адаптивні стилі */
+    @media (max-width: 768px) {
+        .menu {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+        }
+    
+        .menu.active {
+            display: flex;
+        }
+    
+        .menu-toggle {
+            display: flex;
+        }
+    
+        .dropdown-content {
+            position: static;
+        }
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    nav {
+        display: flex;
+        justify-content: space-between; /* Вирівнює елементи по краях */
+        align-items: center; /* Центрує по вертикалі */
+        padding: 10px 20px; /* Внутрішні відступи */
+        background: linear-gradient(to bottom, #87ceeb, #f4f4f9);
+    }
+    
+    .menu-toggle {
+        display: flex;
+        flex-direction: column; /* Вирівнює іконку гамбургера вертикально */
+        cursor: pointer;
+    }
+    
+    .menu {
+        display: flex;
+        align-items: center; /* Вирівнює меню по вертикалі */
+    }
+    
+    .menu > li {
+        margin: 0 10px; /* Відстань між пунктами меню */
+    }
+    
+    .menu > li > a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px; /* Внутрішні відступи для кнопок */
+        transition: background-color 0.3s; /* Плавний перехід для кольору фону */
+    }
+    
+    .menu > li > a:hover {
+        background-color: #111; /* Колір фону при наведенні */
+    }
+    .menu > li > a {
+        background: linear-gradient(135deg, #007BFF, #0056b3); /* Градієнт */
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тінь */
+        transition: background-color 0.3s, transform 0.3s;
+    }
+    
+    .menu > li > a {
+        font-family: 'Arial', sans-serif; /* Змінюємо шрифт */
+        font-size: 16px; /* Розмір шрифту */
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+    
+    .menu > li > a {
+        background-color: #007BFF; /* Основний колір кнопки */
+        color: white; /* Колір тексту */
+        padding: 10px 20px; /* Внутрішні відступи */
+        border-radius: 5px; /* Закруглені кути */
+        text-decoration: none; /* Без підкреслення */
+        transition: background-color 0.3s, transform 0.3s; /* Анімації при переході */
+    }
+    
+    .menu > li > a:hover {
+        background-color: #0056b3; /* Колір при наведенні */
+        transform: scale(1.05); /* Збільшення при наведенні */
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="menu">
+        <li><a href="edit.html">Головна</a></li>
+        <li class="dropdown">
+            <a href="">Розділи</a>
+            <ul class="dropdown-content">
+                <li><a href="historyAviation.html">Історія IT в авіації</a></li>
+                <li><a href="ai.html">Автоматизація та ШІ</a></li>
+                <li><a href="hist.html">Історія подій</a></li>
+                <li><a href="last.html">Легендарні літаки</a></li>
+                <li><a href="radar.html">Радар</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+  <h1>Історія Авіації</h1>
+  <div class="timeline">
+    <!-- 18 століття -->
+    <div class="timeline-event left">
+      <div class="content">
+        <h3>1783</h3>
+        <p>Перший політ на повітряній кулі братів Монгольф'є.</p>
+        <span>Франція</span>
+      </div>
+    </div>
+    
+    <!-- Початок 20 століття -->
+    <div class="timeline-event right">
+      <div class="content">
+        <h3>1903</h3>
+        <p>Перший керований політ братів Райт.</p>
+        <span>Кітті-Гок, США</span>
+      </div>
+    </div>
+    
+    <div class="timeline-event left">
+      <div class="content">
+        <h3>1914</h3>
+        <p>Перший комерційний авіарейс між Санкт-Пітерсбергом і Тампою.</p>
+        <span>США</span>
+      </div>
+    </div>
+  
+    <!-- Міжвоєнний період -->
+    <div class="timeline-event right">
+      <div class="content">
+        <h3>1927</h3>
+        <p>Чарльз Ліндберг здійснив перший трансатлантичний політ.</p>
+        <span>Нью-Йорк – Париж</span>
+      </div>
+    </div>
+  
+    <div class="timeline-event left">
+      <div class="content">
+        <h3>1933</h3>
+        <p>Перший рейс Boeing 247 — сучасного пасажирського літака.</p>
+        <span>США</span>
+      </div>
+    </div>
+    
+    <!-- Друга світова війна -->
+    <div class="timeline-event right">
+      <div class="content">
+        <h3>1944</h3>
+        <p>Створення Міжнародної організації цивільної авіації (ICAO).</p>
+        <span>Чикаго, США</span>
+      </div>
+    </div>
+    
+    <div class="timeline-event left">
+      <div class="content">
+        <h3>1947</h3>
+        <p>Чак Єгер подолав звуковий бар'єр на Bell X-1.</p>
+        <span>США</span>
+      </div>
+    </div>
+    
+    <!-- 50-70 роки -->
+    <div class="timeline-event right">
+      <div class="content">
+        <h3>1957</h3>
+        <p>Перший політ Boeing 707 — реактивного пасажирського літака.</p>
+        <span>США</span>
+      </div>
+    </div>
+  
+    <div class="timeline-event left">
+      <div class="content">
+        <h3>1961</h3>
+        <p>Юрій Гагарін став першою людиною в космосі.</p>
+        <span>СРСР</span>
+      </div>
+    </div>
+    
+    <div class="timeline-event right">
+      <div class="content">
+        <h3>1969</h3>
+        <p>Перший політ Concorde — надзвукового пасажирського літака.</p>
+        <span>Франція</span>
+      </div>
+    </div>
+  
+    <!-- 80-90 роки -->
+    <div class="timeline-event left">
+      <div class="content">
+        <h3>1970</h3>
+        <p>Перший комерційний рейс Boeing 747 ("Джамбо Джет").</p>
+        <span>Нью-Йорк – Лондон</span>
+      </div>
+    </div>
+  
+    <div class="timeline-event right">
+      <div class="content">
+        <h3>1981</h3>
+        <p>Запуск першого багаторазового космічного шатлу Columbia.</p>
+        <span>США</span>
+      </div>
+    </div>
+  
+    <div class="timeline-event left">
+      <div class="content">
+        <h3>1988</h3>
+        <p>Перший політ Boeing 747-400 — наймасовішого літака серії.</p>
+        <span>США</span>
+      </div>
+    </div>
+  
+    <!-- 2000 - 2020 роки -->
+    <div class="timeline-event right">
+      <div class="content">
+        <h3>2005</h3>
+        <p>Перший політ Airbus A380 — найбільшого пасажирського літака.</p>
+        <span>Франція</span>
+      </div>
+    </div>
+  
+    <div class="timeline-event left">
+      <div class="content">
+        <h3>2013</h3>
+        <p>Перший комерційний політ Boeing 787 Dreamliner.</p>
+        <span>США</span>
+      </div>
+    </div>
+  
+    <div class="timeline-event right">
+      <div class="content">
+        <h3>2016</h3>
+        <p>Solar Impulse 2 завершує навколосвітню подорож, використовуючи виключно сонячну енергію.</p>
+        <span>Світ</span>
+      </div>
+    </div>
+  
+    <div class="timeline-event left">
+      <div class="content">
+        <h3>2018</h3>
+        <p>Запуск Boeing 737 MAX 8 — найбільш енергоефективного літака свого класу.</p>
+        <span>США</span>
+      </div>
+    </div>
+  
+    <div class="timeline-event right">
+      <div class="content">
+        <h3>2020</h3>
+        <p>Airbus представив концепт ZEROe — перший водневий літак із нульовими викидами.</p>
+        <span>Європа</span>
+      </div>
+    </div>
+  
+    <!-- Сучасні досягнення -->
+    <div class="timeline-event left">
+      <div class="content">
+        <h3>2021</h3>
+        <p>Virgin Galactic здійснює перший комерційний суборбітальний політ для туристів.</p>
+        <span>США</span>
+      </div>
+    </div>
+  
+    <div class="timeline-event right">
+      <div class="content">
+        <h3>2023</h3>
+        <p>NASA X-59 готовий до тестувань — літак для беззвукових надзвукових польотів.</p>
+        <span>США</span>
+      </div>
+    </div>
+  
+    <div class="timeline-event left">
+      <div class="content">
+        <h3>2023</h3>
+        <p>Випуск першого серійного літака на водневих двигунах.</p>
+        <span>США</span>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+
+  <script>
+    // Функція для показу подій
+    function revealTimelineEvents() {
+      const events = document.querySelectorAll('.timeline-event .content');
+      const triggerPoint = window.innerHeight * 0.8;
+
+      events.forEach(event => {
+        const eventTop = event.getBoundingClientRect().top;
+
+        if (eventTop < triggerPoint) {
+          event.classList.add('visible');
+        } else {
+          event.classList.remove('visible');
+        }
+      });
+    }
+
+    // Додавання обробників подій
+    window.addEventListener('scroll', revealTimelineEvents);
+
+    // Ініціалізація на завантаженні
+    document.addEventListener('DOMContentLoaded', revealTimelineEvents);
+  </script>
+</body>
+</html>
